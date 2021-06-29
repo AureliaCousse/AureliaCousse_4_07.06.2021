@@ -33,7 +33,7 @@ function closeModal(){
 //modalbg: name previously given to the form container
 //closeBtn, btn, closeModal: new names given to elements to create function
 
-//#2 Validation saisie.
+//#2 Validation des input saisis.
 
 let myForm = document.getElementById('myForm');
 let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscule majuscule tiret et espaces
@@ -93,7 +93,7 @@ if (userMail.value.trim()== ""){
 }
 
 
-/*check quantity games*/
+/*check quantity games  */
 let numberGames = document.getElementById("quantity"); 
 
 if (numberGames.value.trim()== ""){   
