@@ -41,14 +41,14 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">   <!-- bouton -->
+          <button class="btn-signup modal-btn">   <!-- bouton tablette/PC -->
             Je m'inscris
           </button>
         </div>
         <div class="hero-img">
           <img src="images/bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn">  <!-- bouton mobile-->
           Je m'inscris
         </button>
       </div>
@@ -104,7 +104,10 @@
               type="date"
               id="birthdate"
               name="birthdate"
-            /><br>
+              value="1900-00-01" 
+              min="1900-00-01"
+              max="2020-11-31"
+            /><br> <!-- added in input: value/min & max lines-->
             <span id="birthdateError"></span>  
           </div>
 
