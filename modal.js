@@ -42,9 +42,8 @@ function closeModal(){
 
 let myForm = document.getElementById('myForm');
 
-
 myForm.addEventListener('submit', function(e) {
-e.preventDefault(); // si vide ou false, entrée sera refusée au moment du submit A mettre juste après la fonction pour éviter de répéter 
+e.preventDefault(); // si vide ou false, entrée sera refusée au moment du submit A mettre juste après la fonction pour éviter de répéter  
 
 
 let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscules majuscules tirets et espaces only
@@ -59,11 +58,12 @@ let gamesRegex = /^[0-99]$/;
     let firstError = document.getElementById('firstError');
     firstError.innerHTML = "Veuillez saisir votre prénom (2 lettres minimum).";
     firstError.style.color = "red";
-     
+    
   } else if (firstRegex.test(userFirst.value) == false) {
     let firstError = document.getElementById('firstError');
     firstError.innerHTML = "Le nom doit comporter des lettres, tiret uniquement.";
     firstError.style.color = "red"; 
+    
   } else {firstError.innerHTML = "";
   }
 
@@ -74,10 +74,12 @@ let gamesRegex = /^[0-99]$/;
     let firstError = document.getElementById('lastError');
     lastError.innerHTML = "Veuillez saisir votre nom (2 lettres minimum).";
     lastError.style.color = "red";
+    
   } else if (lastRegex.test(userLast.value) == false) {
     let lastError = document.getElementById('lastError');
     lastError.innerHTML = "Le nom doit comporter des lettres, tiret uniquement.";
     lastError.style.color = "red";
+    
   }else {lastError.innerHTML = "";
   }
   
@@ -88,10 +90,12 @@ if (userMail.value.trim() == ""){
   let mailError = document.getElementById('mailError');
   mailError.innerHTML = "Veuillez saisir votre adresse mail.";
   mailError.style.color = "red";
+  
 } else if (mailRegex.test(userMail.value) == false) {
   let mailError = document.getElementById('mailError');
   mailError.innerHTML = "Veuillez indiquer une adresse mail valide.";
   mailError.style.color = "red";
+ 
 } else {mailError.innerHTML = "";
 }
 
@@ -103,10 +107,12 @@ if (numberGames.value.trim() == ""){
   let gamesError = document.getElementById('gamesError');
   gamesError.innerHTML = "Veuillez indiquer votre nombre de participations aux tournois GameOn.";
   gamesError.style.color = "red";
+  
 } else if (gamesRegex.test(numberGames.value) == false) {
   let gamesError = document.getElementById('error');
   gamesError.innerHTML = "Veuillez saisir ou sélectionner un nombre de 0 à 99.";
   gamesError.style.color = "red";
+  
 } else {gamesError.innerHTML = "";
 }
 
@@ -131,8 +137,26 @@ if (birthDate.value.trim() == ""){
 
 //#4 Message de confirmation
 
-let form = document.getElementsByTagName("myForm")[0];
-myorm.addEventListener("submit", (e) => {
+
+function validate(myForm){
+
+  if(!valid) {
+    return false;
+}
+else {
+    return confirm('Merci! votre réservation a bien été prise en compte.');
+}
+}
+
+
+
+
+
+
+
+/*
+let myForm = document.getElementsByTagName("form")[0];
+myForm.addEventListener("submit", (e) => {
   e.preventDefault();
   alert("Merci! Votre réservation a bien été prise en compte.");
 });
