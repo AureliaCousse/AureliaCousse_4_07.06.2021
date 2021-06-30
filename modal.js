@@ -113,13 +113,50 @@ if (numberGames.value.trim() == ""){
 
 /*check birthdate*/
 
+/*let birthDate = new Date(1900,0,25);
 
+if (birthDate.value.trim() == ""){   
+  let birthdateError = document.getElementById('birthdateError');
+  birthdateError.innerHTML = "Veuillez indiquer votre date de naissance.";
+  birthdateError.style.color = "red";
+} else if (birhtDate.value == false) {
+  let birthdateError = document.getElementById('error');
+  birthdateError.innerHTML = "Veuillez saisir une date valide.";
+  birthdateError.style.color = "red";
+} else {birthdateError.innerHTML = "";
+}
+*/
+
+//////////////////////////////////////////////////////////////
+
+//#4 Message de confirmation
+
+let form = document.getElementsByTagName("myForm")[0];
+myorm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Merci! Votre réservation a bien été prise en compte.");
+});
+
+
+//////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////
+//TESTS
+/*
 let birthDate = document.getElementById('birthdate');
 
-let annee = birthDate.value.substring(0,4);  /*  substring to isolate a part of the caracters // format YYYY-MM-DD => check caracter from index 0 à 4 excluded ie the first caracters that are the YYYY*/
+let annee = birthDate.value.substring(0,4);  /*  substring to isolate a part of the caracters // format YYYY-MM-DD => check caracter from index 0 à 4 excluded ie the first caracters that are the YYYY
+annee=parseInt(annee,10);*/ /*convertir chaine caracteres en entier (10 pour dire qu'on est en décimal)*/
 
-annee=parseInt(annee,10); /*convertir chaine caracteres en entier (10 pour dire qu'on est en décimal)*/
-
+//////////////////////////////////////////////////////////////
 
 // if (birthDate.value.trim() == ""){     
 //   let birthdateError = document.getElementById('gamesError');
