@@ -23,8 +23,10 @@ function launchModal() {
 //////////////////////////////////////////////////////////////////////////////
 
 //#1 - close modal form
+
 const closeBtn = document.querySelectorAll(".close");
-closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+  closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+
 function closeModal(){
   modalbg.style.display = 'none';  
 }
@@ -33,7 +35,10 @@ function closeModal(){
 //modalbg: name previously given to the form container
 //closeBtn, btn, closeModal: new names given to elements to create function
 
-//#2 Validation des input saisis.
+//////////////////////////////////////////////////////////////////////////////
+
+
+//#2 Validation input saisis.
 
 let myForm = document.getElementById('myForm');
 
@@ -46,9 +51,6 @@ let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscules majuscules tirets et esp
 let lastRegex = /^[a-zA-Z-\s]+$/;
 let mailRegex = /^[a-zA-Z][a-zA-Z\d-\.]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$/; //\d = [0-9] \. = caractere "." += 1 ou plus / *= 0 ou plus
 let gamesRegex = /^[0-99]$/;
-
-var birthDate = document.querySelector('input[type="birthdate"]');
-birthDate.value = '1900-00-01';
 
   /*check prénom*/
   let userFirst = document.getElementById("first"); //on récupère l'input que l'on veut checker
@@ -108,19 +110,36 @@ if (numberGames.value.trim() == ""){
 } else {gamesError.innerHTML = "";
 }
 
-/*check birthdate*/
-let birthdate= document.getElementById("birthdate"); 
 
-if (birthdate.value === ""){   
-  let birthdateError = document.getElementById('birthdateError');
-  birthdateError.innerHTML = "Veuillez saisir une date valide sous le format JJ/MM/AAAA.";
-  birthdateError.style.color = "red";
-} else if (birthdateRegex.test(birthdate.value) == false) {
-  let birthDate = document.getElementById('birthdateError');
-  birthdateErrorr.innerHTML = "Veuillez saisir ou sélectionner une date sous le format JJ/MM/AAAA.";
-  birthdateErrorr.style.color = "red";
-} else {birthdateError.innerHTML = "";
-}
+/*check birthdate*/
+
+
+let birthDate = document.getElementById('birthdate');
+
+let annee = birthDate.value.substring(0,4);  /*  substring to isolate a part of the caracters // format YYYY-MM-DD => check caracter from index 0 à 4 excluded ie the first caracters that are the YYYY*/
+
+annee=parseInt(annee,10); /*convertir chaine caracteres en entier (10 pour dire qu'on est en décimal)*/
+
+
+// if (birthDate.value.trim() == ""){     
+//   let birthdateError = document.getElementById('gamesError');
+//   birthdateError.innerHTML = "Veuillez indiquer votre date de naissance.";
+//   birthdateError.style.color = "red";
+// } else if (annee<1900) {
+//   let birthdateError = document.getElementById('error');
+//   birthdateError.innerHTML = "Veuillez saisir une date valide.";
+//   birthdateError.style.color = "red";
+// } else {birthdateError.innerHTML = "";
+// }
+
+
+
+
 
 }
 )
+
+
+ 
+
+
