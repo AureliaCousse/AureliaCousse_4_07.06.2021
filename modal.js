@@ -45,18 +45,22 @@ myForm.addEventListener('submit', function(e) {
 
   e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au moment du submit 
 
+
+
   let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscule majuscule tiret et espaces
   let lastRegex = /^[a-zA-Z-\s]+$/;
   let mailRegex = /^[a-zA-Z][a-zA-Z\d-\.]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$/; //\d = [0-9] \. = caractere "." += 1 ou plus / *= 0 ou plus
   let gamesRegex = /^[0-99]$/;
+  // let birthdateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9]3[1-9]|4[1-9])$/;
   // let birthdateRegex = /^[1-31]\/[1-12]\/[1900-2050]$/;
 
-  // on récupère l'input que l'on veut checker
+  // on récupère l'input que l'on veut checker:
   let userFirst = document.getElementById("first");
   let userLast = document.getElementById("last");
   let userMail = document.getElementById("email");
   let numberGames = document.getElementById("quantity"); 
-  // let birthDate= document.getElementById("birthdate"); 
+  let birthDate= document.getElementById("birthdate"); 
+  
 
 //   /*check prénom*/
 
@@ -119,8 +123,35 @@ myForm.addEventListener('submit', function(e) {
     } else {gamesError.innerHTML = "";
     }
 
-  
+
 //   /*check birthdate*/
+
+    if (Object.prototype.toString.call(birthDate) === "[object Date]") {
+      // it is a date
+      if (isNaN(birthDate.getTime())) {  
+        // date is not valid
+        
+      } else {
+        // date is valid
+      }
+    } else {
+      let birthdateError = document.getElementById('birthdateError');
+      birthdateError.innerHTML = "Veuillez saisir une date valide.";
+      birthdateError.style.color = "red";
+      // not a date
+    }
+  
+
+
+// let testDate = "20/02/2021"
+//         if (birthdateRegex.test(testDate)) {
+//             document.getElementById("birthdate").innerHTML = "Date follows dd/mm/yyyy format";
+//         }
+//         else{
+//           document.getElementById("birthdate").innerHTML = "Invalid date format";
+//         }
+//                  ////////////////////////
+
 //   let birthdate= document.getElementById("birthdate"); 
 
 //   if (birthdate.value == ""){   
@@ -137,18 +168,44 @@ myForm.addEventListener('submit', function(e) {
 //   }
 
 
-}
-)
 
+//////////////////////////////////////////////////////////////
+
+// function check(){
+//   let radio = document.getElementsByName('location');
+
+//   for (let i = 0, len = radio.length; i < len; i++) {
+//     if (radio[i].checked) {
+//       return true;
+//     }
+//   }
+//   return false}
+
+
+  //////////////////////////////////////////////////////////////
+
+  // let myForm = document.getElementById('myForm');
+  // myForm.addEventListener('submit', function(e) {
+  
+  //   e.preventDefault(); 
+
+  // if(document.querySelector('input[name="checkbox1"]:checked') == null) {
+  //   alert("Merci de bien vouloir lire et accepter les conditions d'utilisation.");
+  // }
 
 //////////////////////////////////////////////////////////////
 
 //#4 Message de confirmation
 
+// const formData = document.querySelectorAll(".formData");
 
-// function validate(myForm){
+// function validate(form){
 
-//   if(valid) {
+//   if(!isValid) {
 //         return confirm('Merci! votre réservation a bien été prise en compte.');
 // }
 // }
+
+}
+
+)
