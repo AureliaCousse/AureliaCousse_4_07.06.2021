@@ -43,8 +43,7 @@ function closeModal(){
 let myForm = document.getElementById('myForm');
 myForm.addEventListener('submit', function(e) {
 
-  e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au moment du submit 
-
+e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au moment du submit 
 
 
   let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscule majuscule tiret et espaces
@@ -59,8 +58,10 @@ myForm.addEventListener('submit', function(e) {
   let userLast = document.getElementById("last");
   let userMail = document.getElementById("email");
   let numberGames = document.getElementById("quantity"); 
-  let birthDate= document.getElementById("birthdate"); 
+  let birthDate = new Date(document.getElementById("birthdate").value); 
+  let cgv = document.getElementById("checkbox1"); 
   
+  console.log(birthDate)
 
 //   /*check prénom*/
 
@@ -124,76 +125,71 @@ myForm.addEventListener('submit', function(e) {
     }
 
 
-//   /*check birthdate*/
+/*check birthdate*/ 
 
-    if (Object.prototype.toString.call(birthDate) === "[object Date]") {
-      // it is a date
-      if (isNaN(birthDate.getTime())) {  
-        // date is not valid
-        
-      } else {
-        // date is valid
-      }
-    } else {
+    if (isNaN(birthDate.getTime())) { // NaN: Not a Number =>date is not valid
       let birthdateError = document.getElementById('birthdateError');
       birthdateError.innerHTML = "Veuillez saisir une date valide.";
       birthdateError.style.color = "red";
-      // not a date
+      } else {
+        const now=new Date();
+      if (now.getTime()-birthDate.getTime()<18*31556952000){
+      let birthdateError = document.getElementById('birthdateError');
+      birthdateError.innerHTML = "Vous devez avoir plus de 18 ans.";
+      birthdateError.style.color = "red";
+      
+      } else {
+        let birthDateError = document.getElementById('birthdateError');
+        birthDateError.innerHTML = "";
+      
     }
+  }
+
+  /*check location*/ 
+
+  if (!check()){
+    let locationError = document.getElementById('locationError');
+    locationError.innerHTML = "Vous devez choisir une location.";
+    locationError.style.color = "red";
+    
+  } else {
+    let locationError = document.getElementById('locationError');
+    locationError.innerHTML = "";
+  }
+
+/*check Acceptation CGU*/
+
+    if (!cgu.checked) {   /*attend true ou false donc pas besoin de mettre ==*/
+      let cguError = document.getElementById('cguError');
+      cguError.innerHTML = "Vous devez confirmer avoir lu et accepté les condition d'utilisation.";
+      cguError.style.color = "red";
+      
+    } else {
+      let cguError = document.getElementById('cguError');
+      cguError.innerHTML = "";
+    }
+    
+} 
+)
+  
+function check(){
+  let radio = document.getElementsByName('location');
+  let result = false;
+  for (let i = 0, len = radio.length; i < len; i++) {
+    if (radio[i].checked) {
+      result = true;
+      
+    }
+  }
+  return result
+  }
+
+
+
+
+
   
 
-
-// let testDate = "20/02/2021"
-//         if (birthdateRegex.test(testDate)) {
-//             document.getElementById("birthdate").innerHTML = "Date follows dd/mm/yyyy format";
-//         }
-//         else{
-//           document.getElementById("birthdate").innerHTML = "Invalid date format";
-//         }
-//                  ////////////////////////
-
-//   let birthdate= document.getElementById("birthdate"); 
-
-//   if (birthdate.value == ""){   
-//   let birthdateError = document.getElementById('birthdateError');
-//   birthdateError.innerHTML = "Veuillez saisir une date valide sous le format JJ/MM/AAAA.";
-//   birthdateError.style.color = "red";
-  
-//   } else if (birthdateRegex.test(birthdate.value) == false) {
-//   let birthDate = document.getElementById('birthdateError');
-//   birthdateErrorr.innerHTML = "Veuillez saisir ou sélectionner une date sous le format JJ/MM/AAAA.";
-//   birthdateErrorr.style.color = "red";
-
-//   } else {birthdateError.innerHTML = "";
-//   }
-
-
-
-//////////////////////////////////////////////////////////////
-
-// function check(){
-//   let radio = document.getElementsByName('location');
-
-//   for (let i = 0, len = radio.length; i < len; i++) {
-//     if (radio[i].checked) {
-//       return true;
-//     }
-//   }
-//   return false}
-
-
-  //////////////////////////////////////////////////////////////
-
-  // let myForm = document.getElementById('myForm');
-  // myForm.addEventListener('submit', function(e) {
-  
-  //   e.preventDefault(); 
-
-  // if(document.querySelector('input[name="checkbox1"]:checked') == null) {
-  //   alert("Merci de bien vouloir lire et accepter les conditions d'utilisation.");
-  // }
-
-//////////////////////////////////////////////////////////////
 
 //#4 Message de confirmation
 
@@ -206,6 +202,3 @@ myForm.addEventListener('submit', function(e) {
 // }
 // }
 
-}
-
-)

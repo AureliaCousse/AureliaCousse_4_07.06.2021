@@ -61,7 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+            
             >
             <div class="formData">
             <label class="first-label" for="first">Prénom</label><br>
@@ -185,6 +185,7 @@
                 >
               </div>
 
+              <span id="locationError"></span>
               <div
                 class="formData">
                 <input
@@ -193,6 +194,7 @@
                   id="checkbox1"
                   checked
                 />
+                <span id="cguError"></span> 
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
