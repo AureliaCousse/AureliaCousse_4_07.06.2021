@@ -530,7 +530,7 @@ footer {
 
 /* style pages sup from nav*/
 .backarrow{
-  color: #061098;
+  color: #3876ac;
   font-size: 2rem;
   margin-right: 25rem;
 }
@@ -538,7 +538,7 @@ footer {
 h3{
   margin-top: 20rem;
   padding: 2rem;
-  border: 4px #061098 dashed;
+  border: 4px #3876ac dashed;
 }
 
 span{

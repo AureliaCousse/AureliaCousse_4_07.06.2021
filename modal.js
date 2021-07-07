@@ -65,7 +65,10 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   let gamesError = document.getElementById('gamesError');
   let locationError = document.getElementById('locationError');
   
-  
+  let isSubmitValid = true;
+
+  firstError.innerHTML = "";
+  //a faire pour chaque champs
 
   // let birthdateError = document.getElementById('birthdateError'); : 
   // variable kept with birthdate block otherwise pb with form after error; even if data ok, still error message 
@@ -78,13 +81,18 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   if (userFirst.value.trim().length <2){   //fonction trim: pour supprimer les espaces de début et de fin
     firstError.innerHTML = "Veuillez saisir un prénom à 2 lettres minimum.";
     firstError.style.color = "red";
+    firstError.border.color = "red solid 3px";
+
+    isSubmitValid = false;
     
   } else if (firstRegex.test(userFirst.value) == false) {
     firstError.innerHTML = "Le nom doit comporter des lettres, tiret uniquement.";
     firstError.style.color = "red";
+
+    isSubmitValid = false;
     
-  } else {firstError.innerHTML = "";
-  }
+  }  
+  
 
 
   /*check nom*/
@@ -152,6 +160,7 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   if (!check()){
     locationError.innerHTML = "Vous devez sélectionner une ville.";
     locationError.style.color = "red";
+    //idem for border
     
   } else {
     locationError.innerHTML = "";
@@ -183,6 +192,12 @@ function check(){
   }
 
 
+if (isSubmitValid) {
+//fermer le modal formulaire
+
+}
+
+
 //# Check & Envoi formulaire
 
 
@@ -196,3 +211,5 @@ function check(){
 //         return confirm('Merci! votre réservation a bien été prise en compte.');
 // }
 // }
+
+//faire une alerte pour message confirmation
