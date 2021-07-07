@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Reservation</title>
+    <title>Reservation Evenements GameOn</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -70,6 +70,7 @@
               type="text"
               id="first"
               name="first"
+              maxlength="20"
               /><br>
             <span id="firstError"></span>  
           </div>
@@ -81,6 +82,7 @@
               type="text"
               id="last"
               name="last"
+              maxlength="20"
             /><br>
             <span id="lastError"></span>  
           </div>
@@ -214,6 +216,7 @@
 
               <input
                 class="btn-submit"
+                id="mySubmit"
                 type="submit"
                 class="button"
                 value="C'est parti"

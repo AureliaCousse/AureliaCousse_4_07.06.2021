@@ -183,13 +183,10 @@ function check(){
   }
 
 
+//# Check & Envoi formulaire
 
 
-
-  
-
-
-//#4 Message de confirmation
+//#4 Message de confirmation --- pb:empêche l'ouverture de la form :(
 
 // const formData = document.querySelectorAll(".formData");
 

@@ -200,6 +200,7 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -539,3 +540,8 @@ h3{
   padding: 2rem;
   border: 4px #061098 dashed;
 }
+
+span{
+  font-size: 1rem;
+}
+
