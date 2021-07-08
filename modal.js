@@ -23,42 +23,57 @@ function launchModal() {
 
 //////////////////////////////////////////////////////////////////////////////
 
-//#1 - close modal form
+/* close modal form*/
+
+function closeModal(){
+  modalbg.style.display = 'none'; 
+  //modalbg: name previously given to the form container (see DOM elements)
+  }
+
 
 const closeBtn = document.querySelectorAll(".close");
-closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
-function closeModal(){
-  modalbg.style.display = 'none';  
-}
-
-//nota bene: 
-//modalbg: name previously given to the form container
-//closeBtn, btn, closeModal: new names given to elements to create function
+  closeBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+  //closeBtn, btn, closeModal: new names given to elements to create function
 
 
-//////////////////////////////////////////////////////////////////////////////
 
-//#2
+/*Function check radio buttons*/
+
+function check(){
+  let radio = document.getElementsByName('location');
+  let result = false;
+
+  for (let i = 0, len = radio.length; i < len; i++) {
+    if (radio[i].checked) {
+      result = true;  
+    }
+  }
+  return result
+  }
+
+
+/*Check & validate user's inputs*/
 
 let myForm = document.getElementById('myForm');
-myForm.addEventListener('submit', function(e) {
+myForm.addEventListener('submit', function(e) { 
 
 
-  // myForm.addEventListener('submit', validModal) pour remplacer functio (e)
-  // function validModal(){totalité du code ci-dessous}
-  //permet check à l'input et non seulement au submit
-
-
+///////////////////////TBC////////////////////////
+//=> replaced by here below, to allow check each input and not at submit only
+//myForm.addEventListener('submit', validModal);
+//function validModal(){  
+ 
 
 e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au moment du submit 
 
-// ce que l'on attend en terme d'entrée dans les champs:
+// To confirm what is valid in inputs fields:
+
   let firstRegex = /^[a-zA-Z-\s]+$/; //accepte minuscule majuscule tiret et espaces
   let lastRegex = /^[a-zA-Z-\s]+$/;
   let mailRegex = /^[a-zA-Z][a-zA-Z\d-\.]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$/; //   (\d = [0-9]) (\. = caractere ".") (+= 1 ou plus) ( *= 0 ou plus)
   let gamesRegex = /^[0-99]$/;
 
-  // on récupère l'input que l'on veut checker:
+  // To get the inputs that are to be checked:
   let userFirst = document.getElementById("first");
   let userLast = document.getElementById("last");
   let userMail = document.getElementById("email");
@@ -66,7 +81,7 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   let numberGames = document.getElementById("quantity"); 
   let checkbox1 = document.getElementById("checkbox1"); 
   
-  // on va chercher les éventuelles erreurs:
+  // To find out errors:
   let firstError = document.getElementById('firstError');
   let lastError = document.getElementById('lastError');
   let mailError = document.getElementById('mailError');
@@ -75,10 +90,10 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   let locationError = document.getElementById('locationError');
   
   
-  // On part du principe que l'info dans le champs est correcte donc true
+  // To consider that inputs are true by default
   let isSubmitValid = true;
 
-  //....sauf si une erreur est détectée => false
+  //....unless error is found => false
   firstError.innerHTML = "";
   lastError.innerHTML = "";
   mailError.innerHTML = "";
@@ -92,16 +107,11 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   console.log(checkbox1)
 
   /*check prénom*/
-  // userFirst.addEventListener("input",nomPrenomValid(e))
-
-  // function nomPrenomValid (event){
-  //   if(event.target.value.trim().length <2)
-  // }
-
+  
   if (userFirst.value.trim().length <2){   //fonction trim: pour supprimer les espaces de début et de fin
     firstError.innerHTML = "Veuillez saisir un prénom à 2 lettres minimum.";
     firstError.style.color = "red";
-
+    
     isSubmitValid = false;
   } 
   
@@ -162,9 +172,6 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
 
       isSubmitValid = false;
     } 
-
-    
-
   } 
 
   /*check quantity games*/
@@ -202,47 +209,15 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
 
     
   
+  /* To send form with confirmation message*/
+    
     if (isSubmitValid != false) {
-      alert("youpi le form est valid");
       closeModal();
+      alert ("Merci! Votre réservation a bien été enregistrée.")
     }
 
-
-
-} 
+  } 
 )
-  
-function check(){
-  let radio = document.getElementsByName('location');
-  let result = false;
-  for (let i = 0, len = radio.length; i < len; i++) {
-    if (radio[i].checked) {
-      result = true;
-      
-    }
-  }
-  return result
-  }
 
 
 
-
-
-
-
-
-//# Check & Envoi formulaire
-
-
-//#4 Message de confirmation --- pb:empêche l'ouverture de la form :(
-
-// const formData = document.querySelectorAll(".formData");
-
-// function validate(form){
-
-//   if(!isValid) {
-//         return confirm('Merci! votre réservation a bien été prise en compte.');
-// }
-// }
-
-//faire une alerte pour message confirmation
