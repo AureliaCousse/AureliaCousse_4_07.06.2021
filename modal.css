@@ -445,6 +445,7 @@ input[data-error]::after {
   margin-top: 57px;
   padding: 0;
 }
+
 .btn-signup {
   outline: none;
   font-size: 1.3rem;
@@ -554,5 +555,20 @@ input:valid {
 }
 
 #confirmation{
-display: none;
+  display: none;
+  height: 43rem;
+}
+
+#confirmation p{
+  padding-top: 6rem;
+  }
+
+@media screen and (max-width: 480px) {
+  .hero-text {
+   font-size: 1.2rem;
+   width: 70%;
+  }
+  .hero-headline{
+    font-size: 4rem;
+  }
 }
