@@ -150,7 +150,7 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   else {   // check that user is over 18 years old
       const now=new Date();
     
-    if (now.getTime()-birthdate.getTime()<18*31556952000){
+    if (now.getTime()-birthDate.getTime()<18*31556952000){
       showError(birthdate, birthdateError, "Vous devez avoir plus de 18 ans.");
       isSubmitValid = false;
     } 
