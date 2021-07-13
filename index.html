@@ -56,6 +56,11 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+            
+            <div id="confirmation">
+              <p>Merci!</p>
+            </div>
+
             <form
               id="myForm"    
               name="reserve"
@@ -104,9 +109,6 @@
               type="date"
               id="birthdate"
               name="birthdate"
-              min="1920-01-01"
-              max="9999-12-31"
-              value=""
             /><br>
             <span id="birthdateError"></span>  
           </div>
@@ -119,9 +121,9 @@
                 class="text-control" 
                 id="quantity" 
                 name="quantity" 
-                min="0" 
+                min="0"
                 max="99"
-                maxlength="2">
+                >
                 <span id="gamesError"></span>  
               </div>
 
@@ -205,7 +207,7 @@
                   checked
                 />
                 
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -221,10 +223,9 @@
               <span id="checkbox1Error"></span> 
 
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 id="mySubmit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
@@ -234,14 +235,14 @@
 
     <!-- Modal for confirmation message-->
 
-      <div class="confirmation">
+      <!-- <div class="confirmation">
         <div class="content">
           <span class="confirmation"></span>
           <div class="modal-body">
             <h3>Merci! Votre réservation a bien été enregistrée.</h3>
           </div>
         </div>
-      </div>
+      </div> -->
     
 
     </main>

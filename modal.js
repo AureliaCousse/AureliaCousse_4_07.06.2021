@@ -28,7 +28,10 @@ function launchModal() {
 function closeModal(){
   modalbg.style.display = 'none'; 
   //modalbg: name previously given to the form container (see DOM elements)
-  }
+  myForm.style.display = "block";
+  document.getElementById("confirmation").style.display = "none";
+}
+
 
 
 const closeBtn = document.querySelectorAll(".close");
@@ -56,13 +59,6 @@ function check(){
 
 let myForm = document.getElementById('myForm');
 myForm.addEventListener('submit', function(e) { 
-
-
-///////////////////////TBC////////////////////////
-//=> replaced by here below, to allow check each input and not at submit only
-//myForm.addEventListener('submit', validModal);
-//function validModal(){  
- 
 
 e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au moment du submit 
 
@@ -93,66 +89,59 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   // To consider that inputs are true by default
   let isSubmitValid = true;
 
-  //....unless error is found => false
-  firstError.innerHTML = "";
-  lastError.innerHTML = "";
-  mailError.innerHTML = "";
+
+  // lastError.innerHTML = ""; idem pour le reste
   gamesError.innerHTML = "";
   locationError.innerHTML = "";
   checkbox1Error.innerHTML = "";
   birthDateError.innerHTML = "";
 
 
-  console.log(birthDate)
-  console.log(checkbox1)
-
   /*check prénom*/
   
   if (userFirst.value.trim().length <2){   //fonction trim: pour supprimer les espaces de début et de fin
-    firstError.innerHTML = "Veuillez saisir un prénom à 2 lettres minimum.";
-    firstError.style.color = "red";
-    
-    isSubmitValid = false;
+        isSubmitValid = false;
+        showError(userFirst, firstError, "Veuillez saisir un prénom à 2 lettres minimum.");
   } 
   
   else if (firstRegex.test(userFirst.value) == false) {
-    firstError.innerHTML = "Le nom doit comporter des lettres, tiret uniquement.";
-    firstError.style.color = "red";
-
+    showError(userFirst, firstError, "Le prénom doit comporter des lettres, tiret uniquement.");
+    
     isSubmitValid = false;
   }  
+
+  else{
+    removeError(userFirst, firstError)
+  }
   
   /*check nom*/
 
   if (userLast.value.trim().length <2){     
-    lastError.innerHTML = "Veuillez saisir un nom à 2 lettres minimum.";
-    lastError.style.color = "red";
-
+    showError(userLast, lastError, "Veuillez saisir un nom à 2 lettres minimum.");
     isSubmitValid = false;
   }
-
   else if (lastRegex.test(userLast.value) == false) {
-    lastError.innerHTML = "Le nom doit comporter des lettres, tiret uniquement.";
-    lastError.style.color = "red";
-
+    showError(userLast, lastError, "Le nom doit comporter des lettres, tiret uniquement.");
     isSubmitValid = false;
+  }
+  else{
+    removeError(userLast, lastError)
   }
 
   /*check email*/
 
-  if (userMail.value.trim()== ""){   
-    mailError.innerHTML = "Veuillez saisir une adresse mail.";
-    mailError.style.color = "red";
-
+  if (userMail.value.trim()== ""){  
+    showError(userMail, mailError, "Veuillez saisir une adresse mail.");
     isSubmitValid = false;
   } 
   
   else if (mailRegex.test(userMail.value.trim()) == false) {
-    mailError.innerHTML = "Veuillez indiquer une adresse mail valide.";
-    mailError.style.color = "red";
-
+    showError(userMail, mailError, "Veuillez indiquer une adresse mail valide.");
     isSubmitValid = false;
   } 
+  else{
+    removeError(userMail, mailError)
+  }
 
   /*check birthdate*/ 
 
@@ -212,12 +201,32 @@ e.preventDefault(); // si "" cad vide ou si error, l'entrée sera refusée au mo
   /* To send form with confirmation message*/
     
     if (isSubmitValid != false) {
-      closeModal();
-      alert ("Merci! Votre réservation a bien été enregistrée.")
+      myForm.style.display = "none";
+      document.getElementById("confirmation").style.display = "block";
+      // alert ("Merci! Votre réservation a bien été enregistrée.")
     }
 
   } 
 )
 
+/**
+ * Delete Error message
+ * @param {*} input 
+ * @param {*} error 
+ */
+function removeError(input, error){
+  error.innerHTML = "";
+  input.parentNode.removeAttribute("data-error-visible");
+}
 
-
+/**
+ * Show Error message
+ * @param {*} input 
+ * @param {*} error 
+ * @param {*} errorMessage 
+ */
+function showError(input, error, errorMessage){
+  error.innerHTML = errorMessage;
+  error.style.color = "red";
+  input.parentNode.setAttribute("data-error-visible", "true");
+}
